@@ -328,14 +328,14 @@ The `createBook` mutation takes the `name` of a book as an argument.
 # schema/book.graphql
 
 type Mutation {
-	createBook(name: String!): Book
-		@rest(
+  createBook(name: String!): Book
+    @rest(
       endpoint: "https://xxxx.supabase.co/rest/v1/books"
-		  configuration: "supabase_config"
+      configuration: "supabase_config"
       headers: [{ name: "apikey" value: "$apikey" }]
-		  method: POST
-		  postbody: "{\"name\": \"{{.Get \"name\"}}\"}"
-		)
+      method: POST
+      postbody: "{\"name\": \"{{.Get \"name\"}}\"}"
+    )
 }
 ```
 
