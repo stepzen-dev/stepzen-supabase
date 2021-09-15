@@ -5,8 +5,6 @@ An example Supabase application connected to StepZen's `@rest` directive through
 ## Outline
 
 * [Setup StepZen Project](#setup-stepzen-project)
-  * `stepzen.config.json`
-  * `index.graphql`
   * `config.yaml`
 * [Setup Supabase Project](#setup-supabase-project)
   * Create a New Table
@@ -25,32 +23,10 @@ An example Supabase application connected to StepZen's `@rest` directive through
 
 ## Setup StepZen Project
 
+Create a `config.yaml` file with the provided `sample.config.yaml`.
+
 ```bash
-touch stepzen.config.json index.graphql config.yaml
-mkdir schema
-touch schema/author.graphql schema/book.graphql
-```
-
-### `stepzen.config.json`
-
-```json
-{
-  "endpoint": "api/stepzen-supabase"
-}
-```
-
-### `index.graphql`
-
-```graphql
-schema
-  @sdl(
-    files: [
-      "schema/author.graphql",
-      "schema/book.graphql",
-    ]
-  ) {
-  query: Query
-}
+mv sample.config.yaml config.yaml
 ```
 
 ### `config.yaml`
@@ -196,11 +172,9 @@ This time you will receive an author object.
 
 ## Types and Queries
 
-Add the ability to query for authors with StepZen queries.
-
 ### `author.graphql`
 
-Create an `Author` type with types for `id`, `name`, `created_at`, and `updated_at`.
+`Author` type with types for `id`, `name`, `created_at`, and `updated_at`.
 
 ```graphql
 # schema/author.graphql
@@ -253,8 +227,6 @@ query AUTHORS_QUERY {
 
 ## Mutations
 
-Add the ability to create books with StepZen mutations.
-
 ### Create a Books Table
 
 Create `books` table on Supabase with the same schema as the `authors` table.
@@ -294,7 +266,7 @@ curl --request GET \
 
 ### `book.graphql`
 
-Create a `Book` type with types for `id`, `name`, `created_at`, and `updated_at`.
+`Book` type with types for `id`, `name`, `created_at`, and `updated_at`.
 
 ```graphql
 # schema/book.graphql

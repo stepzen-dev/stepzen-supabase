@@ -1,0 +1,26 @@
+type Book {
+  id: ID!
+  name: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Query {
+  books: [Book]
+    @rest(
+      endpoint: "https://xxxx.supabase.co/rest/v1/books",
+      configuration: "supabase_config",
+      headers: [{ name: "apikey" value: "$apikey" }]
+    )
+}
+
+type Mutation {
+  createBook(name: String!): Book
+    @rest(
+      endpoint: "https://xxxx.supabase.co/rest/v1/books"
+      configuration: "supabase_config"
+      headers: [{ name: "apikey" value: "$apikey" }]
+      method: POST
+      postbody: "{\"name\": \"{{.Get \"name\"}}\"}"
+    )
+}

@@ -1,0 +1,15 @@
+type Author {
+  id: ID!
+  name: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Query {
+  authors: [Author]
+    @rest(
+      endpoint: "https://xxxx.supabase.co/rest/v1/authors",
+      configuration: "supabase_config",
+      headers: [{ name: "apikey" value: "$apikey" }]
+    )
+}

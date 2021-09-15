@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: supabase_config
+      apikey: xxxx
